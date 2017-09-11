@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum RxTableViewType: Int {
+    case simplest
+    case addSections
+}
+
 /// Simplest UITableView
 class MainTableViewController: UITableViewController {
     
@@ -23,30 +28,25 @@ class MainTableViewController: UITableViewController {
 
     // MARK: - UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 1    // Section的数量
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
+        return items.count    // Section中Row的数量
     }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) // TableViewCell绘制
         cell.textLabel?.text = items[indexPath.row]
-
         return cell
     }
-    
     // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)    // TableViewCell点击事件
+        let viewController = RxTableViewController()
+        viewController.type = RxTableViewType(rawValue: indexPath.row)!
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 40    // TableViewCell高度
     }
 
     /*
