@@ -37,7 +37,6 @@ class MultipleRxTableViewController: UIViewController {
     var variables = [Variable<[SectionModel<String, Int>]>]()
     var dataSources = [RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>]()
     var random =  Variable(0)
-    var tableViewDispose: Disposable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,13 +125,6 @@ extension MultipleRxTableViewController {
             self.variables[$0].value = self.items
         }).disposed(by: disposeBag)
     }
-    
-    func bindWithVariableArray1() {
-        variable = Variable(items)
-        tableViews.forEach {
-            tableViewDispose = variable.asObservable().debug().bind(to: $0.rx.items(dataSource: dataSource))
-        }
-    }
 }
 
 extension MultipleRxTableViewController {
@@ -155,12 +147,6 @@ extension MultipleRxTableViewController {
     // 随机刷新一个TableView
     func updateOne() {
         random.value = Int.random(0, 2)
-    }
-    
-    func updateOne1() {
-        tableViewDispose?.dispose()
-        let index = Int.random(0, 2)
-//        tableViewDispose = variable.asObservable().bind(to: tableViews[index].rx.items(dataSource: dataSource))
     }
 }
 
