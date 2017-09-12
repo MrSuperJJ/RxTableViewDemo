@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		45134FFDA838FA37699AED5E /* Pods_RxTableViewDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5D15839E1E7103C1E840382 /* Pods_RxTableViewDemo.framework */; };
-		C7675B391F6662A600EFFBA0 /* RxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7675B381F6662A600EFFBA0 /* RxTableViewController.swift */; };
+		C7675B391F6662A600EFFBA0 /* SingleRxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7675B381F6662A600EFFBA0 /* SingleRxTableViewController.swift */; };
+		C774BD0F1F6796440029EE20 /* MultipleRxTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C774BD0E1F6796440029EE20 /* MultipleRxTableViewController.swift */; };
 		C7AFAC4E1F6627AD003CE540 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAC4D1F6627AD003CE540 /* AppDelegate.swift */; };
 		C7AFAC551F6627AD003CE540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7AFAC541F6627AD003CE540 /* Assets.xcassets */; };
 		C7AFAC581F6627AD003CE540 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AFAC561F6627AD003CE540 /* LaunchScreen.storyboard */; };
@@ -18,7 +19,8 @@
 /* Begin PBXFileReference section */
 		098F4C822062B8F24069240C /* Pods-RxTableViewDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTableViewDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxTableViewDemo/Pods-RxTableViewDemo.release.xcconfig"; sourceTree = "<group>"; };
 		824CE96A0C5AFF417988ECCC /* Pods-RxTableViewDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTableViewDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxTableViewDemo/Pods-RxTableViewDemo.debug.xcconfig"; sourceTree = "<group>"; };
-		C7675B381F6662A600EFFBA0 /* RxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxTableViewController.swift; sourceTree = "<group>"; };
+		C7675B381F6662A600EFFBA0 /* SingleRxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRxTableViewController.swift; sourceTree = "<group>"; };
+		C774BD0E1F6796440029EE20 /* MultipleRxTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleRxTableViewController.swift; sourceTree = "<group>"; };
 		C7AFAC4A1F6627AD003CE540 /* RxTableViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxTableViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7AFAC4D1F6627AD003CE540 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7AFAC541F6627AD003CE540 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,7 +73,8 @@
 			children = (
 				C7AFAC5F1F66297F003CE540 /* Supporting Files */,
 				C7AFAC601F6629B1003CE540 /* MainTableViewController.swift */,
-				C7675B381F6662A600EFFBA0 /* RxTableViewController.swift */,
+				C7675B381F6662A600EFFBA0 /* SingleRxTableViewController.swift */,
+				C774BD0E1F6796440029EE20 /* MultipleRxTableViewController.swift */,
 			);
 			path = RxTableViewDemo;
 			sourceTree = "<group>";
@@ -229,7 +232,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7675B391F6662A600EFFBA0 /* RxTableViewController.swift in Sources */,
+				C774BD0F1F6796440029EE20 /* MultipleRxTableViewController.swift in Sources */,
+				C7675B391F6662A600EFFBA0 /* SingleRxTableViewController.swift in Sources */,
 				C7AFAC611F6629B1003CE540 /* MainTableViewController.swift in Sources */,
 				C7AFAC4E1F6627AD003CE540 /* AppDelegate.swift in Sources */,
 			);

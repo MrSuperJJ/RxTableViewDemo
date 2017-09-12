@@ -1,5 +1,5 @@
 //
-//  RxTableViewController.swift
+//  SingleRxTableViewController.swift
 //  RxTableViewDemo
 //
 //  Created by 叶佳骏 on 2017/9/11.
@@ -12,7 +12,7 @@ import RxDataSources
 
 let disposeBag = DisposeBag()
 
-class RxTableViewController: UIViewController {
+class SingleRxTableViewController: UIViewController {
     
     var type: RxTableViewType = .simplest
     var tableView: UITableView!
@@ -29,6 +29,8 @@ class RxTableViewController: UIViewController {
             simplestFuc()
         case .addSections:
             addSectionsFunc()
+        default:
+            break
         }
     }
     
@@ -52,7 +54,7 @@ class RxTableViewController: UIViewController {
     }
 }
 
-extension RxTableViewController {
+extension SingleRxTableViewController {
     
     func simplestFuc() {
         // 1.将数据绑定到TableView上
