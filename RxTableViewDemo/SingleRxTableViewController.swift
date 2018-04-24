@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxCocoa
 import RxSwift
 import RxDataSources
 
@@ -69,37 +70,20 @@ extension SingleRxTableViewController {
     }
     
     func addSectionsFunc() {
-        // 1.自定义Model，遵循SectionModelType
-        struct SectionModel<HeaderType, ItemType>: SectionModelType {
-            var header: HeaderType
-            var items: [ItemType]
-            
-            init(header: HeaderType, items: [ItemType]) {
-                self.header = header
-                self.items = items
-            }
-            
-            init(original: SectionModel<HeaderType, ItemType>, items: [Item]) {
-                self.header = original.header
-                self.items = items
-            }
-        }
-        // 2.创建DataSource
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>()
-        // 3.配置TableViewCell
-        dataSource.configureCell = { (section, tableView, indexPath, element) in
+        // 1.创建DataSource
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,Int>>(configureCell: { (section, tableView, indexPath, element) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
             cell.textLabel?.text = "row \(element)"
             return cell
-        }
-        // 4.配置HeaderView(可选)
-        dataSource.titleForHeaderInSection = { dataSource, sectionIndex in
+        })
+        // 2.设置HeaderTitle（可选）
+        dataSource.titleForHeaderInSection = { (dataSource, sectionIndex) -> String? in
             return dataSource[sectionIndex].header
         }
-        // 5.将数据绑定到TableView上
+        // 3.将数据绑定到TableView上
         let items = [SectionModel(header: "section 1", items: [1, 2, 3]), SectionModel(header: "section 2", items: [1, 2, 3])]
         Observable.just(items).bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
-        // 6.TableViewCell点击事件响应
+        // 4.TableViewCell点击事件响应
         tableView.rx.itemSelected.map {
             return ($0, items[$0.section].header, dataSource[$0])
         }.subscribe(onNext: { indexPath, header, item in

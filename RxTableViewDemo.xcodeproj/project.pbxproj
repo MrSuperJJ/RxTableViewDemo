@@ -14,6 +14,7 @@
 		C7AFAC551F6627AD003CE540 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7AFAC541F6627AD003CE540 /* Assets.xcassets */; };
 		C7AFAC581F6627AD003CE540 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7AFAC561F6627AD003CE540 /* LaunchScreen.storyboard */; };
 		C7AFAC611F6629B1003CE540 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFAC601F6629B1003CE540 /* MainTableViewController.swift */; };
+		C7C3F667208F0A4F00030547 /* SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C3F666208F0A4F00030547 /* SectionModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		C7AFAC571F6627AD003CE540 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7AFAC591F6627AD003CE540 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7AFAC601F6629B1003CE540 /* MainTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
+		C7C3F666208F0A4F00030547 /* SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModel.swift; sourceTree = "<group>"; };
 		D5D15839E1E7103C1E840382 /* Pods_RxTableViewDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxTableViewDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -75,6 +77,7 @@
 				C7AFAC601F6629B1003CE540 /* MainTableViewController.swift */,
 				C7675B381F6662A600EFFBA0 /* SingleRxTableViewController.swift */,
 				C774BD0E1F6796440029EE20 /* MultipleRxTableViewController.swift */,
+				C7C3F666208F0A4F00030547 /* SectionModel.swift */,
 			);
 			path = RxTableViewDemo;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				C774BD0F1F6796440029EE20 /* MultipleRxTableViewController.swift in Sources */,
 				C7675B391F6662A600EFFBA0 /* SingleRxTableViewController.swift in Sources */,
 				C7AFAC611F6629B1003CE540 /* MainTableViewController.swift in Sources */,
+				C7C3F667208F0A4F00030547 /* SectionModel.swift in Sources */,
 				C7AFAC4E1F6627AD003CE540 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

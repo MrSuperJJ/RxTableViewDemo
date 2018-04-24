@@ -10,21 +10,6 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-struct SectionModel<HeaderType, ItemType>: SectionModelType {
-    var header: HeaderType
-    var items: [ItemType]
-    
-    init(header: HeaderType, items: [ItemType]) {
-        self.header = header
-        self.items = items
-    }
-    
-    init(original: SectionModel<HeaderType, ItemType>, items: [Item]) {
-        self.header = original.header
-        self.items = items
-    }
-}
-
 class MultipleRxTableViewController: UIViewController {
     
     var type: RxTableViewType = .updateAll
@@ -32,7 +17,7 @@ class MultipleRxTableViewController: UIViewController {
     var tableViews = [UITableView]()
     var items = [SectionModel(header: "section 1", items: [1, 2, 3])]
     var variable: Variable<[SectionModel<String, Int>]>!
-    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>()
+    var dataSource: RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>!
     
     var variables = [Variable<[SectionModel<String, Int>]>]()
     var dataSources = [RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>]()
@@ -76,11 +61,11 @@ extension MultipleRxTableViewController {
     }
     
     func bindWithVariable() {
-        dataSource.configureCell = { (section, tableView, indexPath, element) in
+        dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>(configureCell: { (section, tableView, indexPath, element) in
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
             cell.textLabel?.text = "\(element)"
             return cell
-        }
+        })
         dataSource.titleForHeaderInSection = { dataSource, sectionIndex in
             return dataSource[sectionIndex].header
         }
@@ -99,18 +84,16 @@ extension MultipleRxTableViewController {
     
     func bindWithVariables() {
         for _ in tableViews {
-            dataSources += [RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>()]
-            variables += [Variable([])]
-        }
-        dataSources.forEach {
-            $0.configureCell = { (section, tableView, indexPath, element) in
+            let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>(configureCell: { (section, tableView, indexPath, element) in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
                 cell.textLabel?.text = "\(element)"
                 return cell
-            }
-            $0.titleForHeaderInSection = { dataSource, sectionIndex in
+            })
+            dataSource.titleForHeaderInSection = { dataSource, sectionIndex in
                 return dataSource[sectionIndex].header
             }
+            dataSources += [dataSource]
+            variables += [Variable([])]
         }
         for (index, tableView) in tableViews.enumerated() {
             variables[index].asObservable().debug().bind(to: tableView.rx.items(dataSource: dataSources[index])).disposed(by: disposeBag)
