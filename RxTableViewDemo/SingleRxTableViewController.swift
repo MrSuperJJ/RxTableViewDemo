@@ -40,19 +40,6 @@ class SingleRxTableViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func rxSwiftFunc() {
-        var str = "str"
-        let label = UILabel(frame: .zero)
-        Observable
-            .of(str)
-            .bind(to: label.rx.text)
-            .disposed(by: disposeBag) // label.text = "str"
-        str = "changed"               // label.text = "changed"
-        
-        Observable.of(str).subscribe(onNext: {
-            label.text = $0
-        }).disposed(by: disposeBag)
-    }
 }
 
 extension SingleRxTableViewController {
